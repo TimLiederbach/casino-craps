@@ -45,10 +45,20 @@ The player will see an introduction screen with an input area for their name, th
 The game view will dispay the craps table with their betting options. Below the table will display the name of the player, how much money remains in their balance, how much they are betting, and a display for what they win or lose each roll. To the left of the table will display the dice that they can click on to initiate a roll/turn. 
 
 ### Playing The Game
-What will be the flow of the game, what will the user be expeted to do and what will the user expect from the gam
+- Player places bet on "Pass" and "Don't Pass"
+- Player rolls dice
+- Player either wins, loses, or a Point is established on the first roll
+    - If a win or lose, then the game starts at the beginning
+- If a point is established, the player gets to place 'Odds', 'Buys', and 'Lays'
+- Player rolls
+    - The player wins on 'Buys' until Point or Craps is rolled
+    -If Craps is rolled he loses money on 'Pass', 'Odds' on 'Pass', and 'Buys' and wins on 'Don't Pass', 'Odss' on 'Dont Pass', and Lays.
+    -If the Point is rolled before Craps then he wins on 'Pass', 'Odds' on 'Pass', and 'Buys'
+    but loses on 'Don't Pass', 'Odss' on 'Dont Pass', and Lays.
+- A new round starts after the point is rolled or craps is rolled.
 
 ### Winning The Game
-They can continue playing as long as they have money remaining in their balance. They lose by losing all of their money.
+They can continue playing as long as they have money remaining in their balance. You can win money several ways. If the player bets on 'Pass' and a 7 or 11 is rolled on the come-out roll they win. If they establish a point (either a 4,5,6,8,9,10) on the come-out roll, then they have to roll that same number again before a 7 is rolled to win. Odds can be placed behind 'Pass' bet to win more money after a point is established. On the flip side, if a player bets on 'Don't Pass', they win if a 2,3, or 12 is rolled. Or if a point is established, they win if a 7 is rolled before the point is rolled. Also, for bets/lays: a player wins on bets if that number is rolled before a 7 is rolled. A player wins on lays if that number is not rolled before 7 is rolled.
 
 ### Game Reset
 If they lose all their money, an option will pop up that allows them to start over at the landing page.
