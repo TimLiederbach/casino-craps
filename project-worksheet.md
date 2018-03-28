@@ -21,7 +21,7 @@ I want to make a casino craps game, much like the free version here (https://wiz
 
 ## Wireframes
 
-**Uploaded into images directory**
+![Wireframes](/images/wireframe.jpg?raw=true "Wireframes")
 
 ## Priority Matrix
 
@@ -95,10 +95,6 @@ If they lose all their money, an option will pop up that allows them to start ov
  - Landing Page
     - Form to enter name and betting amount; button to initiate game
 
-
-Based on the initial logic defined in the previous game phases section try and breakdown the logic further into functional components, and by that we mean functions.  Does your logic indicate that code could be encapsulated for the purpose of reusablility.  Once a function has been defined it can then be incorporated into a class as a method. 
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. 
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
