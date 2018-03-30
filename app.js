@@ -18,7 +18,6 @@ const chipsUnHighlight = $('.chip').on('mouseleave', function () {
 let chipValue =  $('.chip').on('click', function() {
    $(this).addClass('selected')
    $(this).siblings().removeClass('selected')
-   console.log($(this).text());
    return $(this).text();
 });
 
@@ -39,10 +38,14 @@ const dontpassUnHighlight = $('.dont-pass').on('mouseleave', function () {
   });
 
 const passBet = $('.pass').on('click', function () {
-  console.log("selected");
   $( ".selected" ).clone().appendTo(this);
   $(this).children().removeClass('highlight');
   $(this).children().removeClass('selected');
+  let betValue = parseInt($(".selected").text(), 10);
+  readyPlayerOne.pass += betValue;
+  readyPlayerOne.balance -= betValue;
+  console.log(readyPlayerOne.pass);
+  console.log(readyPlayerOne.balance);
   });
 
 const dontPassBet = $('.dont-pass').on('click', function () {
@@ -79,17 +82,17 @@ class Player {
   constructor(name, balance) {
     this.name = name;
     this.balance = balance
-    this.pass = 20;
+    this.pass = 0;
     this.dontPass = 0;
   }
   winPass () {
-    this.balance += this.pass;
+    this.balance += this.pass *= 2;
   }
   losePass () {
     this.pass = 0;
   }
   winDontPass () {
-    this.balance += this.dontPass;
+    this.balance += this.dontPass *= 2;
   }
   loseDontPass () {
     this.dontPass = 0;
@@ -167,15 +170,17 @@ const readyPlayerOne = new Player('Tim', 200);
 
 const gamePlay = function() {
   if (pointEstablished === false) {
-    console.log('working-false');
+    console.log('working-nopoint');
       if (diceTotal === 7 || diceTotal === 11) {
         readyPlayerOne.winPass();
         readyPlayerOne.loseDontPass();
         console.log(readyPlayerOne.balance)
+        $('.craps-table').children().empty();
       } else if (diceTotal === 2 || diceTotal === 3 || diceTotal === 12)  {
         readyPlayerOne.losePass();
         readyPlayerOne.winDontPass();
         console.log(readyPlayerOne.balance)
+        $('.craps-table').children().empty();
       } else {
           alert(`The Point is ${diceTotal}!`);
           pointNumberValue = diceTotal;
@@ -183,17 +188,19 @@ const gamePlay = function() {
           console.log(readyPlayerOne.balance)
       }
   } else if (pointEstablished === true) {
-      console.log('working-false');
+      console.log('working-point');
         if (diceTotal === 7)  {
           readyPlayerOne.losePass();
           readyPlayerOne.winDontPass();
           pointEstablished = false;
           console.log(readyPlayerOne.balance)
+          $('.craps-table').children().empty();
         } else if (diceTotal === pointNumberValue) {
           readyPlayerOne.winPass();
           readyPlayerOne.loseDontPass();
           pointEstablished = false;
           console.log(readyPlayerOne.balance)
+          $('.craps-table').children().empty();
         }
   }
 }
