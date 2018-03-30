@@ -1,6 +1,6 @@
 .craps-table  {
   border: 3px solid black;
-  width: 600px;
+  width: 450px;
   height: 300px;
   margin: auto;
 }
@@ -25,7 +25,28 @@
   padding: 10px;
 }
 
+.dice {
+  float:right;
+  width: 40px;
+  height: 40px;
+  background: #F5F5F5;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+  margin: 5px;
+}
+
+button {
+    float:right;
+}
+
+h3 {
+  float:right;
+}
+
 .chip {
+  display: inline-block;
   height: 12px;
   width: 12px;
   margin: 10px;

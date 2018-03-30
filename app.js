@@ -43,6 +43,20 @@ const passBet = $('.pass').on('click', function () {
   $(this).children().removeClass('selected');
   });
 
+function rollDice () {
+  let d1 = Math.floor(Math.random() * 6) + 1;
+  let d2 = Math.floor(Math.random() * 6) + 1;
+  let diceTotal = d1 + d2;
+  $(".die1").text(`${d1}`);
+  $(".die2").text(`${d2}`);
+  $("h3").text(`You rolled a ${diceTotal}.`)
+}
+  // let die1 = $('.die1');
+  // let die2 = $('.die2');
+  // let outcome = $('.outcome');
+
+
+const clickDice = $('button').on('click', rollDice);
 
 
 let diceValue = null;
