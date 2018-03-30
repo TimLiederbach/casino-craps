@@ -15,15 +15,19 @@
   background-color: green;
   width: 50px;
   height: 50px;
+  padding: 10px;
 }
 
 .dont-pass {
   background-color: red;
   width: 50px;
   height: 50px;
+  padding: 10px;
 }
 
 .chip {
+  height: 12px;
+  width: 12px;
   margin: 10px;
   padding:5px;
 
@@ -39,6 +43,10 @@
 
 .fifty {
   background-color: green;
+}
+
+.selected {
+  border: 2px solid black;
 }
 
 .highlight  {

@@ -14,11 +14,36 @@ const chipsUnHighlight = $('.chip').on('mouseleave', function () {
   });
 
 let chipValue =  $('.chip').on('click', function() {
-   $(this).css('border', '2px solid black')
-   $(this).siblings().css('border', '')
+   $(this).addClass('selected')
+   $(this).siblings().removeClass('selected')
    console.log($(this).text());
    return $(this).text();
 });
+
+const passHighlight = $('.pass').on('mouseover', function () {
+  $(this).addClass('highlight')
+  });
+
+const passUnHighlight = $('.pass').on('mouseleave', function () {
+  $(this).removeClass('highlight')
+  });
+
+const dontpassHighlight = $('.dont-pass').on('mouseover', function () {
+  $(this).addClass('highlight')
+  });
+
+const dontpassUnHighlight = $('.dont-pass').on('mouseleave', function () {
+  $(this).removeClass('highlight')
+  });
+
+const passBet = $('.pass').on('click', function () {
+  console.log("selected");
+  $( ".selected" ).clone().appendTo(this);
+  $(this).children().removeClass('highlight');
+  $(this).children().removeClass('selected');
+  });
+
+
 
 let diceValue = null;
 
