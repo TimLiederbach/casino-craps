@@ -1,0 +1,46 @@
+.craps-table  {
+  border: 3px solid black;
+  width: 600px;
+  height: 300px;
+  margin: auto;
+}
+
+.chip-panel {
+  width: 200px;
+  height:50px;
+  margin: auto;
+}
+
+.pass {
+  background-color: green;
+  width: 50px;
+  height: 50px;
+}
+
+.dont-pass {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+}
+
+.chip {
+  margin: 10px;
+  padding:5px;
+
+}
+
+.five {
+  background-color: orange;
+}
+
+.twentyfive {
+  background-color: blue;
+}
+
+.fifty {
+  background-color: green;
+}
+
+.highlight  {
+  background-color: rgba(255,0,0,0.4);
+}

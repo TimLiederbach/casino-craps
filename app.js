@@ -1,11 +1,24 @@
-eslint-env jquery
+//eslint-env jquery
 $(document).ready(function() {
 
 let pointNumberValue = null;
 
 let pointEstablished = false;
 
-let chipDenomination = setDenom;
+const chipsHighlight = $('.chip').on('mouseover', function () {
+  $(this).addClass('highlight')
+  });
+
+const chipsUnHighlight = $('.chip').on('mouseleave', function () {
+  $(this).removeClass('highlight')
+  });
+
+let chipValue =  $('.chip').on('click', function() {
+   $(this).css('border', '2px solid black')
+   $(this).siblings().css('border', '')
+   console.log($(this).text());
+   return $(this).text();
+});
 
 let diceValue = null;
 
@@ -17,68 +30,87 @@ class Player {
   constructor(name, balance) {
     this.name = name;
     this.balance = balance
+  }
+}
+
+class Pass extends Player {
+  constructor(name, balance) {
+    super(name, balance);
     this.pass = 0;
+  }
+  win () {
+    this.balance += this.pass;
+  }
+  lose () {
+    this.pass = 0;
+  }
+}
+
+class dontPass extends Player {
+  constructor(name, balance) {
+    super(name, balance);
     this.dontPass = 0;
+  }
+  win () {
+    this.balance += this.dontPass;
+  }
+  lose () {
+    this.dontPass = 0;
+  }
+}
+
+class passOdds extends Player {
+  super(name, balance) {
+    this.passOdds = 0;
+  }
+  win () {
+    this.dontOdds *= 2;
+  }
+  lose () {
+    this.dontOdds = 0;
+  }
+}
+
+class Odds extends Player {
+  super(name, balance) {
     this.passOdds = 0;
     this.dontPassOdds = 0;
+  }
+}
+
+class Buy extends Player {
+  super(name, balance) {
     this.fourBuy = 0;
-    this.fourLay = 0;
     this.fiveBuy = 0;
-    this.fiveLay = 0;
     this.sixBuy = 0;
-    this.sixLay = 0;
     this.eightBuy = 0;
-    this.eightLay = 0;
     this.nineBuy = 0;
-    this.nineLay = 0;
     this.tenBuy = 0;
+  }
+}
+
+ class Lay extends Player {
+  super(name, balance) {
+    this.fourLay = 0;
+    this.fiveLay = 0;
+    this.sixLay = 0;
+    this.eightLay = 0;
+    this.nineLay = 0;
     this.tenLay = 0;
   }
-  // drive() {
-  //   this.fuel--;
-  //   return 'Vroom!';
-  // }
-  // refuel() {
-  //   this.fuel = 100;
-  // }
 }
 
-const setDenom = function (e) {
-  return $(parseInt(this.text()));
-}
-
-$('#addHome').on('click', function() {
-    console.log(this);
-});
-
-const chipsHighlight = $('.chips').on('mouseover', function () {
-  $(this).css('border', '2px orange')
-  });
-
-const chipsEvent = $('.chips').on('click', changeDenom);
-
-const readyPlayerOne = (Player(playerName, playerOneBalance));
-
-$(".guidance").modal("show").on("shown", function () {
-    window.setTimeout(function () {
-        $(".guidance").modal("hide");
-    }, 3000);
+const readyPlayerOne = new Player(playerName, playerOneBalance);
 
 const gamePlay = function() {
   if (diceValue = 7||11) {
-    readyPlayerOne.pass *= 2;
+    ;
   }
-
-
-});
 }
 
 
-
-
-
-
-
+console.log(pointEstablished)
+console.log(chipValue)
 
 
 });
