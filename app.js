@@ -1,12 +1,18 @@
 //eslint-env jquery
 $(document).ready(function() {
 
+//These three variables track where in the game a player is at each roll.
+
+//pointNumberValue tracks what number the point(Craps term) is set, either (4,5,6,8,9,or 10)
 let pointNumberValue = undefined;
 
+//pointEstablished tracks whether a point has been set or nah
 let pointEstablished = false;
 
+//liveBets tracks whether a bet has been placed on the table. A bet must exist before a roll is allowed.
 let liveBets = true;
 
+//These three variables add a highlight feature when scrolling over the three possible chip denominations, and the ability to select one.
 const chipsHighlight = $('.chip').on('mouseover', function () {
   $(this).addClass('highlight')
   });
@@ -21,6 +27,8 @@ let chipValue =  $('.chip').on('click', function() {
    return $(this).text();
 });
 
+
+//These next four constants highlight the areas where you can place a bet.
 const passHighlight = $('.pass').on('mouseover', function () {
   $(this).addClass('highlight')
   });
@@ -37,6 +45,7 @@ const dontpassUnHighlight = $('.dont-pass').on('mouseleave', function () {
   $(this).removeClass('highlight')
   });
 
+//Displays chips on 'Pass' bets and passes the bet value to readyPlayerOne object.
 const passBet = $('.pass').on('click', function () {
   $( ".selected" ).clone().appendTo(this);
   $(this).children().removeClass('highlight');
@@ -48,6 +57,7 @@ const passBet = $('.pass').on('click', function () {
   console.log(readyPlayerOne.balance);
   });
 
+//Displays chips on 'Dont Pass' options and passes the bet value to readyPlayerOne object.
 const dontPassBet = $('.dont-pass').on('click', function () {
   console.log("selected");
   $( ".selected" ).clone().appendTo(this);
@@ -55,29 +65,14 @@ const dontPassBet = $('.dont-pass').on('click', function () {
   $(this).children().removeClass('selected');
   });
 
-let diceTotal = undefined;
-
-function rollDice () {
-  if (liveBets === true) {
-  let d1 = Math.floor(Math.random() * 6) + 1;
-  let d2 = Math.floor(Math.random() * 6) + 1;
-  diceTotal = d1 + d2;
-  $(".die1").text(`${d1}`);
-  $(".die2").text(`${d2}`);
-  $("h3").text(`You rolled a ${diceTotal}.`)
-  gamePlay ();
-  }  else {
-    alert('Please place a bet before you roll!');
-  }
-}
-
+//Adds eventListener and function to allow a player to rolla the dice
 const clickDice = $('button').on('click', rollDice);
-
 
 const playerName = $('#form input[name=username]').val();
 
 let playerOneBalance = $('#form input[amount=balance]').val();
 
+//The player object constructor to house name, balance, bets, and winning/losing calculations
 class Player {
   constructor(name, balance) {
     this.name = name;
@@ -99,75 +94,29 @@ class Player {
   }
 }
 
-// class Pass extends Player {
-//   constructor(name, balance) {
-//     super(name, balance);
-//     this.pass = 20;
-//   }
-//   win () {
-//     this.balance += this.pass;
-//   }
-//   lose () {
-//     this.pass = 0;
-//   }
-// }
-
-class dontPass extends Player {
-  constructor(name, balance) {
-    super(name, balance);
-    this.dontPass = 0;
-  }
-  win () {
-    this.balance += this.dontPass;
-  }
-  lose () {
-    this.dontPass = 0;
-  }
-}
-
-class passOdds extends Player {
-  super(name, balance) {
-    this.passOdds = 0;
-  }
-  win () {
-    this.dontOdds *= 2;
-  }
-  lose () {
-    this.dontOdds = 0;
-  }
-}
-
-class Odds extends Player {
-  super(name, balance) {
-    this.passOdds = 0;
-    this.dontPassOdds = 0;
-  }
-}
-
-class Buy extends Player {
-  super(name, balance) {
-    this.fourBuy = 0;
-    this.fiveBuy = 0;
-    this.sixBuy = 0;
-    this.eightBuy = 0;
-    this.nineBuy = 0;
-    this.tenBuy = 0;
-  }
-}
-
- class Lay extends Player {
-  super(name, balance) {
-    this.fourLay = 0;
-    this.fiveLay = 0;
-    this.sixLay = 0;
-    this.eightLay = 0;
-    this.nineLay = 0;
-    this.tenLay = 0;
-  }
-}
-
+//hard code to establish player, will replace with form inputs
 const readyPlayerOne = new Player('Tim', 200);
 
+//Setting global varible to keep track of dice value
+let diceTotal = undefined;
+
+//Function to generate random numbers to simulate dice roll
+function rollDice () {
+  if (liveBets === true) {
+  let d1 = Math.floor(Math.random() * 6) + 1;
+  let d2 = Math.floor(Math.random() * 6) + 1;
+  diceTotal = d1 + d2;
+  $(".die1").text(`${d1}`);
+  $(".die2").text(`${d2}`);
+  $("h3").text(`You rolled a ${diceTotal}.`)
+  //runs gamePlay function after every roll
+  gamePlay ();
+  }  else {
+    alert('Please place a bet before you roll!');
+  }
+}
+
+//Function to control game flow and logic, invoked after every dice roll.
 const gamePlay = function() {
   if (pointEstablished === false) {
     console.log('working-nopoint');
@@ -205,7 +154,46 @@ const gamePlay = function() {
   }
 }
 
+// class passOdds extends Player {
+//   super(name, balance) {
+//     this.passOdds = 0;
+//   }
+//   win () {
+//     this.dontOdds *= 2;
+//   }
+//   lose () {
+//     this.dontOdds = 0;
+//   }
+// }
 
+// class Odds extends Player {
+//   super(name, balance) {
+//     this.passOdds = 0;
+//     this.dontPassOdds = 0;
+//   }
+// }
+
+// class Buy extends Player {
+//   super(name, balance) {
+//     this.fourBuy = 0;
+//     this.fiveBuy = 0;
+//     this.sixBuy = 0;
+//     this.eightBuy = 0;
+//     this.nineBuy = 0;
+//     this.tenBuy = 0;
+//   }
+// }
+
+//  class Lay extends Player {
+//   super(name, balance) {
+//     this.fourLay = 0;
+//     this.fiveLay = 0;
+//     this.sixLay = 0;
+//     this.eightLay = 0;
+//     this.nineLay = 0;
+//     this.tenLay = 0;
+//   }
+// }
 
 
 
