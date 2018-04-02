@@ -1,6 +1,59 @@
 //eslint-env jquery
 $(document).ready(function() {
 
+//The player object constructor to house name, balance, bets, and winning/losing calculations
+class Player {
+  constructor(name, balance) {
+    this.name = name;
+    this.balance = balance;
+    this.pass = 0;
+    this.dontPass = 0;
+  }
+  winPass () {
+    this.balance += this.pass *= 2;
+  }
+  losePass () {
+    this.pass = 0;
+  }
+  winDontPass () {
+    this.balance += this.dontPass *= 2;
+  }
+  loseDontPass () {
+    this.dontPass = 0;
+  }
+}
+
+let name = undefined;
+let balance = undefined;
+let readyPlayerOne = undefined;
+
+//set eventListener to submit player details and exit landing page
+const submitPlayerDetails = $('.submit').on('click', function(e) {
+    e.preventDefault();
+    name = $('.name').val();
+    console.log(name);
+    balance =$('input[name=balance]:checked').val();
+    console.log(balance);
+    if (name !== undefined && balance !== undefined) {
+    readyPlayerOne = new Player(name, balance);
+    $('.name-display').text(name);
+    $('.balance-display').text(balance);
+    $('.modal').css('display', 'none')
+  } else {
+    alert('Please type a name and pick a starting amount!')
+  }
+});
+
+
+// const playerName = $('.name input[name=username]').val();
+// console.log(playername);
+
+// let playerOneBalance = $('.balance input[name="balance"]:checked').val();
+// console.log(playerOneBalance)
+
+
+//const readyPlayerOne = new Player(playerName, playerOneBalance);
+
 //These three variables track where in the game a player is at each roll.
 
 //pointNumberValue tracks what number the point(Craps term) is set, either (4,5,6,8,9,or 10)
@@ -66,36 +119,7 @@ const dontPassBet = $('.dont-pass').on('click', function () {
   });
 
 //Adds eventListener and function to allow a player to rolla the dice
-const clickDice = $('button').on('click', rollDice);
-
-const playerName = $('#form input[name=username]').val();
-
-let playerOneBalance = $('#form input[amount=balance]').val();
-
-//The player object constructor to house name, balance, bets, and winning/losing calculations
-class Player {
-  constructor(name, balance) {
-    this.name = name;
-    this.balance = balance
-    this.pass = 0;
-    this.dontPass = 0;
-  }
-  winPass () {
-    this.balance += this.pass *= 2;
-  }
-  losePass () {
-    this.pass = 0;
-  }
-  winDontPass () {
-    this.balance += this.dontPass *= 2;
-  }
-  loseDontPass () {
-    this.dontPass = 0;
-  }
-}
-
-//hard code to establish player, will replace with form inputs
-const readyPlayerOne = new Player('Tim', 200);
+const clickDice = $('.diceBtn').on('click', rollDice);
 
 //Setting global varible to keep track of dice value
 let diceTotal = undefined;

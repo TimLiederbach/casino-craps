@@ -10,6 +10,7 @@ h1 {
 
 .modal {
   position:fixed;
+  display:block;
   z-index: 1;
   left:0;
   top:0;
@@ -24,6 +25,7 @@ h1 {
   padding: 20px;
   width: 80%;
   text-align: center;
+  border-radius: 15px;
   box-shadow: 0 5px 8px 0 rgba(0,0,0,.6);
 }
 
@@ -37,10 +39,13 @@ h1 {
 }
 
 .chip-panel {
-  width: 200px;
-  height:50px;
-  margin: auto;
+  width: 130px;
+  height: 40px;
+  position: relative;
+  top: -190px;
+  left: 502px;
   background-color: white;
+  border-radius: 15px;
 }
 
 .pass {
@@ -112,13 +117,20 @@ h3 {
 
 .chip {
   display: inline-block;
-  height: 12px;
-  width: 12px;
-  margin: 10px;
-  padding:5px;
-  border-radius: 50%;
-  border: 2px dashed black;
+    height: 12px;
+    width: 12px;
+    margin: 7px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 2px dashed black;
 
+}
+
+.dashboard {
+  height: 200px;
+  width: 600px;
+  margin: -120px auto 0 auto;
+  border-radius: 25px;
 }
 
 .five {
@@ -132,6 +144,59 @@ h3 {
 .fifty {
   background-color: #eb6ded;
 }
+
+.div-name {
+    background-color: red;
+    height: 30px;
+    width: 300px;
+    line-height: 30px;
+    font-size: 24px;
+    padding: 5px;
+    position: relative;
+    top: -150px;
+    left: 190px;
+    border-radius: 15px;
+}
+
+.div-balance {
+  background-color: red;
+  line-height: 30px;
+  font-size: 24px;
+  padding: 5px;
+  width: 130px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+  top: -230px;
+  left: 634px;
+}
+
+.div-bet {
+  background-color: white;
+  line-height: 30px;
+  font-size: 24px;
+  padding: 5px;
+  width: 159px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+  top: -270px;
+  left: 776px;
+}
+
+.name-display {
+  color: white;
+  margin-left: 5px;
+}
+
+.balance-display {
+  color: white;
+}
+
+.bet-display {
+  color: black;
+}
+
 
 .selected {
   border: 2px solid red;

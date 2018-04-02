@@ -22,7 +22,7 @@
           <form>
             <div>
               <label for="name">Name:</label>
-              <input type="text" class="name" name="user_name" />
+              <input type="text" class="name" name="username" />
             </div>
           <div>
             <p>Please select your starting amount</p>
@@ -39,7 +39,7 @@
             <label for="amountChoice3">1000</label>
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -54,14 +54,17 @@
     <div class="dice-panel">
       <div class="dice die1">0</div>
       <div class="dice die2">0</div> <br>
-      <button>Roll Dice!</button>
+      <button class="diceBtn">Roll Dice!</button>
       <h3 class="outcome"></h3>
     </div>
+    <div class="div-name">Player Name:<span class="name-display"></span></div>
     <div class="chip-panel">
         <div class="chip five">5</div>
         <div class="chip twentyfive">25</div>
         <div class="chip fifty">50</div>
     </div>
+    <div class="div-balance">Balance:<span class="balance-display"></span></div>
+    <div class="div-bet">Current Bet:<span class="bet-display"></span></div>
   </main>
 
 </body>
