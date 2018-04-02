@@ -1,7 +1,19 @@
+body {
+  background-color: black;
+}
+
+h1 {
+  margin: 50px 0 75px 0;
+  text-align: center;
+  color: white;
+}
+
+
 .craps-table  {
   border: 3px solid black;
-  width: 450px;
-  height: 300px;
+  width: 800px;
+  height: 400px;
+  background-image: url("./images/crapsTable.png");
   margin: auto;
 }
 
@@ -9,20 +21,46 @@
   width: 200px;
   height:50px;
   margin: auto;
+  background-color: white;
 }
 
 .pass {
-  background-color: green;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
+    padding: 10px;
+}
+
+.pass-left {
+    position: relative;
+    top: 77px;
+    left: 26px;
+    width: 15px;
+    height: 150px;
+}
+
+.pass-right {
+    position: relative;
+    top: 120px;
+    left: 120px;
+    width: 330px;
+    height: 15px;
 }
 
 .dont-pass {
-  background-color: red;
-  width: 50px;
-  height: 50px;
   padding: 10px;
+}
+
+.dont-pass-left {
+  position: relative;
+  top: -150px;
+  left: 67px;
+  width: 12px;
+  height: 110px;
+}
+.dont-pass-right {
+  position: relative;
+  top: -83px;
+  left: 170px;
+  width: 280px;
+  height: 15px;
 }
 
 .dice {
@@ -35,6 +73,14 @@
   font-size: 24px;
   text-align: center;
   margin: 5px;
+}
+
+.dice-panel {
+  position: relative;
+  top: -390px;
+  left: 720px;
+  height: 150px;
+  width: 200px;
 }
 
 button {
@@ -51,23 +97,25 @@ h3 {
   width: 12px;
   margin: 10px;
   padding:5px;
+  border-radius: 50%;
+  border: 2px dashed black;
 
 }
 
 .five {
-  background-color: orange;
+  background-color: #6fed6d;
 }
 
 .twentyfive {
-  background-color: blue;
+  background-color: #a5c7ff;
 }
 
 .fifty {
-  background-color: green;
+  background-color: #eb6ded;
 }
 
 .selected {
-  border: 2px solid black;
+  border: 2px solid red;
 }
 
 .highlight  {
