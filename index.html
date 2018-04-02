@@ -15,6 +15,35 @@
     <h1>Royal Palms <img src="./images/flamingo.png"> Casino Craps</h1>
   </header>
   <main>
+    <div class="landingPage modal">
+      <div class="modal-content">
+          <h2>Welcome to Royal Palms online Casino Craps Game!!!</h2>
+          <p>Please enter your name, starting amount, and click submit to begin.</p>
+          <form>
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" class="name" name="user_name" />
+            </div>
+          <div>
+            <p>Please select your starting amount</p>
+            <input type="radio" class="balance"
+              name="balance" value="200">
+            <label for="amountChoice1">200</label>
+
+            <input type="radio" class="balance"
+             name="balance" value="500">
+            <label for="amountChoice2">500</label>
+
+            <input type="radio" class="balance"
+             name="balance" value="1000">
+            <label for="amountChoice3">1000</label>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="point-board"></div>
     <div class="craps-table">
       <div class="pass pass-left"></div>
