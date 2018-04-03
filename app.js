@@ -11,15 +11,23 @@ class Player {
   }
   winPass () {
     this.balance += this.pass *= 2;
+    $('.balance-display').text(this.balance);
+    $('.bet-display').text(0);
+    this.pass = 0;
   }
   losePass () {
     this.pass = 0;
+    $('.bet-display').text(0);
   }
   winDontPass () {
     this.balance += this.dontPass *= 2;
+    $('.balance-display').text(this.balance);
+    $('.bet-display').text(0);
+    this.dontPass = 0;
   }
   loseDontPass () {
     this.dontPass = 0;
+    $('.bet-display').text(0);
   }
 }
 
@@ -100,22 +108,38 @@ const dontpassUnHighlight = $('.dont-pass').on('mouseleave', function () {
 
 //Displays chips on 'Pass' bets and passes the bet value to readyPlayerOne object.
 const passBet = $('.pass').on('click', function () {
-  $( ".selected" ).clone().appendTo(this);
-  $(this).children().removeClass('highlight');
-  $(this).children().removeClass('selected');
   let betValue = parseInt($(".selected").text(), 10);
-  readyPlayerOne.pass += betValue;
-  readyPlayerOne.balance -= betValue;
-  console.log(readyPlayerOne.pass);
-  console.log(readyPlayerOne.balance);
+    if (betValue<=readyPlayerOne.balance) {
+      $( ".selected" ).clone().appendTo(this);
+      $(this).children().removeClass('highlight');
+      $(this).children().removeClass('selected');
+      let currentBet = readyPlayerOne.pass += betValue;
+      let currentBalance = readyPlayerOne.balance -= betValue;
+      $('.balance-display').text(currentBalance);
+      $('.bet-display').text(currentBet);
+      console.log(readyPlayerOne.pass);
+      console.log(readyPlayerOne.balance);
+    } else {
+      alert('You do not have enough in your balance. Please place a lower bet');
+    }
   });
 
 //Displays chips on 'Dont Pass' options and passes the bet value to readyPlayerOne object.
 const dontPassBet = $('.dont-pass').on('click', function () {
-  console.log("selected");
-  $( ".selected" ).clone().appendTo(this);
-  $(this).children().removeClass('highlight');
-  $(this).children().removeClass('selected');
+  let betValue = parseInt($(".selected").text(), 10);
+    if (betValue<=readyPlayerOne.balance) {
+      $( ".selected" ).clone().appendTo(this);
+      $(this).children().removeClass('highlight');
+      $(this).children().removeClass('selected');
+      let currentBet = readyPlayerOne.dontPass += betValue;
+      let currentBalance = readyPlayerOne.balance -= betValue;
+      $('.balance-display').text(currentBalance);
+      $('.bet-display').text(currentBet);
+      console.log(readyPlayerOne.dontPass);
+      console.log(readyPlayerOne.balance);
+    } else {
+      alert('You do not have enough in your balance. Please place a lower bet');
+    }
   });
 
 //Adds eventListener and function to allow a player to rolla the dice
